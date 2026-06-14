@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gemini Broski — Convos</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f0ebe3;
+    --brown: #5c3d1e;
+    --brown-light: #c4a882;
+    --card-bg: #faf7f2;
+    --text: #2c1f0e;
+    --text-muted: #8a7560;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: #e8e0d5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.phone {
+  background: var(--bg);
+  width: 100%;
+  max-width: 480px;
+  height: 100vh;
+  border-radius: 0;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 32px 80px rgba(92,61,30,0.18);
+  overflow: hidden;
+}
+
+  .header {
+    padding: 28px 20px 16px;
+    flex-shrink: 0;
+  }
+
+  .header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    color: var(--text);
+  }
+
+  .new-chat-btn {
+    margin: 0 16px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: var(--brown);
+    color: #fff;
+    border: none;
+    border-radius: 14px;
+    padding: 14px;
+    width: calc(100% - 32px);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    flex-shrink: 0;
+  }
+
+  .new-chat-btn:hover { background: #4a3018; }
+  .new-chat-btn:active { transform: scale(0.98); }
+  .new-chat-btn svg { width: 16px; height: 16px; stroke: #fff; fill: none; stroke-width: 2.5; }
+
+  .list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0 16px 20px;
+  }
+
+  .list::-webkit-scrollbar { width: 0; }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin: 14px 0 8px;
+  }
+
+  .convo-card {
+    background: var(--card-bg);
+    border-radius: 14px;
+    padding: 14px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s;
+    box-shadow: 0 2px 8px rgba(92,61,30,0.05);
+  }
+
+  .convo-card:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(92,61,30,0.1);
+  }
+
+  .convo-icon {
+    width: 36px; height: 36px;
+    background: var(--bg);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .convo-icon svg { width: 16px; height: 16px; stroke: var(--brown); fill: none; stroke-width: 1.8; }
+
+  .convo-body { flex: 1; min-width: 0; }
+
+  .convo-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .convo-preview {
+    font-size: 12px;
+    color: var(--text-muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 6px;
+  }
+
+  .convo-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 11px;
+    color: var(--brown-light);
+  }
+
+  .convo-meta span { display: flex; align-items: center; gap: 3px; }
+  .convo-meta svg { width: 11px; height: 11px; stroke: var(--brown-light); fill: none; stroke-width: 1.8; }
+</style>
+</head>
+<body>
+<div class="phone">
+  <div class="header">
+    <h1>Convos :P</h1>
+  </div>
+
+  <button class="new-chat-btn" onclick="location.href='/chat'">
+    <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+    New Chat
+  </button>
+
+  <div class="list">
+    <div class="section-label">Today</div>
+
+    <div class="convo-card" onclick="location.href='chat.html'">
+      <div class="convo-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+      <div class="convo-body">
+        <div class="convo-title">Recipe suggestions</div>
+        <div class="convo-preview">Can you suggest some healthy dinner recipe...</div>
+        <div class="convo-meta">
+          <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>2 hours ago</span>
+          <span><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>12 messages</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-label">Previous</div>
+
+    <div class="convo-card" onclick="location.href='chat.html'">
+      <div class="convo-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+      <div class="convo-body">
+        <div class="convo-title">Travel planning</div>
+        <div class="convo-preview">I'm planning a trip to Japan next month...</div>
+        <div class="convo-meta">
+          <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Yesterday</span>
+          <span><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>24 messages</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="convo-card" onclick="location.href='chat.html'">
+      <div class="convo-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+      <div class="convo-body">
+        <div class="convo-title">Code debugging</div>
+        <div class="convo-preview">I'm having trouble with this React component...</div>
+        <div class="convo-meta">
+          <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>2 days ago</span>
+          <span><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>8 messages</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="convo-card" onclick="location.href='chat.html'">
+      <div class="convo-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+      <div class="convo-body">
+        <div class="convo-title">Book recommendations</div>
+        <div class="convo-preview">What are some good science fiction books...</div>
+        <div class="convo-meta">
+          <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>3 days ago</span>
+          <span><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>15 messages</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="convo-card" onclick="location.href='chat.html'">
+      <div class="convo-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+      <div class="convo-body">
+        <div class="convo-title">Fitness advice</div>
+        <div class="convo-preview">How can I improve my morning workout ro...</div>
+        <div class="convo-meta">
+          <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>1 week ago</span>
+          <span><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>18 messages</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
